@@ -10,7 +10,7 @@ pipeline {
 //                sh 'apt install terraform --classic'
 //               }
 //            }
-        stage('Terraform init') {
+        stage('Terraform ssinit') {
             steps {
                 sh 'terraform init'
                 sh 'terraform plan'
