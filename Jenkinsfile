@@ -3,7 +3,7 @@ pipeline {
      tools {
         terraform 'terraform'
      }
-//        stages {
+    stages {
 //         stage('Install Terraform') {
 //              steps {
 //                sh 'apt update'
