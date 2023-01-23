@@ -22,7 +22,7 @@
 
 pipeline {
     agent any
-//     stages {
+       stages {
 //         stage('Clone') {
 //             steps {
 //                 git branch: 'master',
