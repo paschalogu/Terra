@@ -23,13 +23,12 @@
 pipeline {
     agent any
        stages {
-//         stage('Clone') {
-//             steps {
-//                 git branch: 'master',
-//                 credentialsId: '<your_credentials_id>',
-//                 url: 'https://github.com/user/terraform-repo.git'
-//             }
-//         }
+        stage('Install Terraform') {
+             steps {
+               sh 'apt update'
+               sh 'apt install terraform --classic'
+              }
+          }
 //         stage('Configure AWS') {
 //             steps {
 //                 withAWS(credentials: '<your_aws_credentials>') {
