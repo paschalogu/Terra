@@ -3,9 +3,9 @@ pipeline {
       stages {
         stage('Install Terraform') {
             steps {
-                sh 'apt-get update'
-                sh 'apt install snapd'
-                sh 'snap install terraform --classic'
+                sh 'sudo apt-get update'
+                sh 'sudo apt install snapd'
+                sh 'sudo snap install terraform --classic'
                 
             }
         }
