@@ -22,23 +22,23 @@
 
 pipeline {
     agent any
-    stages {
-        stage('Clone') {
-            steps {
-                git branch: 'master',
-                credentialsId: '<your_credentials_id>',
-                url: 'https://github.com/user/terraform-repo.git'
-            }
-        }
-        stage('Configure AWS') {
-            steps {
-                withAWS(credentials: '<your_aws_credentials>') {
-                    sh 'aws configure set aws_access_key_id <access_key>'
-                    sh 'aws configure set aws_secret_access_key <secret_key>'
-                    sh 'aws configure set region <region>'
-                }
-            }
-        }
+//     stages {
+//         stage('Clone') {
+//             steps {
+//                 git branch: 'master',
+//                 credentialsId: '<your_credentials_id>',
+//                 url: 'https://github.com/user/terraform-repo.git'
+//             }
+//         }
+//         stage('Configure AWS') {
+//             steps {
+//                 withAWS(credentials: '<your_aws_credentials>') {
+//                     sh 'aws configure set aws_access_key_id <access_key>'
+//                     sh 'aws configure set aws_secret_access_key <secret_key>'
+//                     sh 'aws configure set region <region>'
+//                 }
+//             }
+//         }
         stage('Terraform') {
             steps {
                 sh 'terraform init'
