@@ -1,47 +1,23 @@
-
-pipeline{
-  agent any
-  environment {
-  PATH = "{$path}:${getTerraformPath()}"
-}
-
-stages{
-  stage('terraform init'){
-    steps{
-      sh 'terraform init'
-      sh 'terraform apply -auto-approve'
+pipeline {
+    agent any
+    tools {
+        terraform "terraform"
     }
-  }
-  
-  }
-  }
-  def getTerraformPath(){
-  tfHome = tool name: 'terraform', type: 'terraform'
-  return tfHome
-  }
-
-
-
-
-
-// pipeline {
-//     agent any
-//      tools {
-//         terraform 'terraform-11'
-//      }
-//     stages {
-//          stage('Install Terraform') {
-//               steps {
-//                 sh 'apt update'
-//                 sh 'apt install terraform --classic'
-//                }
-//             }
-//         stage('Terraform ssinit') {
-//             steps {
-//                 sh 'terraform init'
-//                 sh 'terraform plan'
-//                 sh 'terraform apply -auto-approve'
-//             }
-//         }
-//     }
-// }
+    stages {
+        stage('Terraform Init') {
+            steps {
+                sh 'terraform init'
+            }
+        }
+        stage('Terraform Plan') {
+            steps {
+                sh 'terraform plan'
+            }
+        }
+        stage('Terraform Apply') {
+            steps {
+                sh 'terraform apply -auto-approve'
+            }
+        }
+    }
+}
